@@ -8,50 +8,50 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-let taskInput = document.getElementById("add__input"); //Add a new task.
-let addButton = document.getElementById("add__btn"); //add button
-let incompleteTaskHolder = document.getElementById("todo"); //ul of #todo
-let completedTasksHolder = document.getElementById("done"); //done
+let taskInput = document.getElementById('add__input'); //Add a new task.
+let addButton = document.getElementById('add__btn'); //add button
+let incompleteTaskHolder = document.getElementById('todo'); //ul of #todo
+let completedTasksHolder = document.getElementById('done'); //done
 
 
 //New task list item
 let createNewTaskElement = function (taskString) {
 
-    let listItem = document.createElement("li");
-    listItem.className = "task";
+    let listItem = document.createElement('li');
+    listItem.className = 'task';
 
     //input (checkbox)
-    let checkBox = document.createElement("input"); //checkbx
+    let checkBox = document.createElement('input'); //checkbx
     //label
-    let label = document.createElement("label"); //label
+    let label = document.createElement('label'); //label
     //input (text)
-    let editInput = document.createElement("input"); //text
+    let editInput = document.createElement('input'); //text
     //button.edit
-    let editButton = document.createElement("button"); //edit button
+    let editButton = document.createElement('button'); //edit button
 
     //button.delete
-    let deleteButton = document.createElement("button"); //delete button
-    let deleteButtonImg = document.createElement("img"); //delete button image
+    let deleteButton = document.createElement('button'); //delete button
+    let deleteButtonImg = document.createElement('img'); //delete button image
 
     label.innerText = taskString;
     label.className = 'task__label';
     
 
     //Each elements, needs appending
-    checkBox.className = "task__checkbox";
-    checkBox.type = "checkbox";
+    checkBox.className = 'task__checkbox';
+    checkBox.type = 'checkbox';
     
-    editInput.className = "task__input";
-    editInput.type = "text";
+    editInput.className = 'task__input';
+    editInput.type = 'text';
     
-    editButton.className = "task__btn_edit";
-    editButton.innerText = "Edit"; //innerText encodes special characters, HTML does not.
+    editButton.className = 'task__btn_edit';
+    editButton.innerText = 'Edit'; //innerText encodes special characters, HTML does not.
     
-    deleteButtonImg.className = "task__img"
+    deleteButtonImg.className = 'task__img'
     deleteButtonImg.src = './remove.svg';
     deleteButtonImg.alt = '';
     
-    deleteButton.className = "task__btn_del";
+    deleteButton.className = 'task__btn_del';
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -67,7 +67,7 @@ let createNewTaskElement = function (taskString) {
 
 
 let addTask = function () {
-    console.log("Add Task...");
+    console.log('Add Task...');
     //Create a new list item with the text from the #new-task:
     if (!taskInput.value) return;
     let listItem = createNewTaskElement(taskInput.value);
@@ -76,43 +76,43 @@ let addTask = function () {
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
-    taskInput.value = "";
+    taskInput.value = '';
 
 }
 
 //Edit an existing task.
 
 let editTask = function () {
-    console.log("Edit Task...");
-    console.log("Change 'edit' to 'save'");
+    console.log('Edit Task...');
+    console.log('Change 'edit' to 'save'');
 
 
     let listItem = this.parentNode;
 
     let editInput = listItem.querySelector('.task__input');
-    let label = listItem.querySelector(".task__label");
-    let editBtn = listItem.querySelector(".task__btn_edit");
-    let containsClass = listItem.classList.contains("task_edit_mode");
+    let label = listItem.querySelector('.task__label');
+    let editBtn = listItem.querySelector('.task__btn_edit');
+    let containsClass = listItem.classList.contains('task_edit_mode');
     //If class of the parent is .editmode
     if (containsClass) {
 
         //switch to .editmode
         //label becomes the inputs value.
         label.innerText = editInput.value;
-        editBtn.innerText = "Edit";
+        editBtn.innerText = 'Edit';
     } else {
         editInput.value = label.innerText;
-        editBtn.innerText = "Save";
+        editBtn.innerText = 'Save';
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("task_edit_mode");
+    listItem.classList.toggle('task_edit_mode');
 };
 
 
 //Delete task.
 let deleteTask = function () {
-    console.log("Delete Task...");
+    console.log('Delete Task...');
 
     let listItem = this.parentNode;
     let ul = listItem.parentNode;
@@ -124,7 +124,7 @@ let deleteTask = function () {
 
 //Mark task completed
 let taskCompleted = function () {
-    console.log("Complete Task...");
+    console.log('Complete Task...');
 
     //Append the task list item to the #done
     let listItem = this.parentNode;
@@ -135,7 +135,7 @@ let taskCompleted = function () {
 
 
 let taskIncomplete = function () {
-    console.log("Incomplete Task...");
+    console.log('Incomplete Task...');
     //Mark task as incomplete.
     //When the checkbox is unchecked
     //Append the task list item to the #todo.
@@ -147,7 +147,7 @@ let taskIncomplete = function () {
 
 
 let ajaxRequest = function () {
-    console.log("AJAX Request");
+    console.log('AJAX Request');
 }
 
 //The glue to hold it all together.
@@ -155,16 +155,16 @@ let ajaxRequest = function () {
 
 //Set the click handler to the addTask function.
 addButton.onclick = addTask;
-addButton.addEventListener("click", addTask);
-addButton.addEventListener("click", ajaxRequest);
+addButton.addEventListener('click', addTask);
+addButton.addEventListener('click', ajaxRequest);
 
 
 let bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
-    console.log("bind list item events");
+    console.log('bind list item events');
     //select ListItems children
-    let checkBox = taskListItem.querySelector(".task__checkbox");
-    let editButton = taskListItem.querySelector(".task__btn_edit");
-    let deleteButton = taskListItem.querySelector(".task__btn_del");
+    let checkBox = taskListItem.querySelector('.task__checkbox');
+    let editButton = taskListItem.querySelector('.task__btn_edit');
+    let deleteButton = taskListItem.querySelector('.task__btn_del');
 
 
     //Bind editTask to edit button.
