@@ -70,7 +70,7 @@
 }
 
 /* Heading */
-.section-label,
+.section__label,
 .add__label {
   color: #333;
   font-weight: 700;
