@@ -158,7 +158,7 @@
 
 /* Completed */
 .done_list .task__input,
-.done_list .task__label,{
+.done_list .task__label {
   text-decoration: line-through;
   color: #888;
 }
